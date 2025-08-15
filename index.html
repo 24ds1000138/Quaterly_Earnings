@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quarterly Earnings — Interactive Presentation</title>
+
+  <!-- Preload a critical image & JSON to improve perceived performance -->
+  <link rel="preload" href="images/diagrams/kpi-architecture.svg" as="image">
+  <link rel="preload" href="data/analysis.json" as="fetch" crossorigin="anonymous">
+
+  <!-- RevealJS core styles from CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/theme/black.css" id="theme">
+
+  <!-- Highlight.js style used by Reveal highlight plugin -->
+  <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.9.0/styles/monokai.css">
+
+  <!-- KaTeX for math -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- TITLE -->
+      <section data-background-transition="zoom">
+        <h1>Quarterly Earnings Report</h1>
+        <h3 class="fragment fade-in">Q2 FY2025</h3>
+        <p class="fragment fade-in-then-semi-out">Prepared by: Technical Consultant</p>
+        <p class="fragment fade-in-then-out">Contact: 24ds1000138@ds.study.iitm.ac.in (<a href="mailto:24ds1000138@ds.study.iitm.ac.in">email me</a>)</p>
+        <aside class="notes">
+          Welcome everyone. This deck demonstrates a modern, interactive approach to quarterly reporting using RevealJS,
+          with live charts, markdown-powered slides, math, code samples, and speaker notes.
+        </aside>
+      </section>
+
+      <!-- AGENDA (Markdown slide embedded) -->
+      <section data-markdown data-separator="^---$" data-separator-vertical="^--$">
+        <textarea data-template>
+# Agenda
+- Financial highlights
+- Segment performance
+- KPI visualization
+- Outlook & guidance
+- Q&A
+
+--
+
+## What to watch for
+- **Revenue trajectory** vs guidance _(fragments below)_
+- **Margin expansion** opportunities
+- **Cash flow** sustainability
+
+--
+
+## Performance levers
+1. Pricing discipline <!-- .element: class="fragment fade-in" -->
+2. Opex control <!-- .element: class="fragment fade-in" -->
+3. Mix shift to fee income <!-- .element: class="fragment fade-in" -->
+
+---
+
+## Data sources
+- ERP exports (revenue, opex)
+- Data warehouse (segment KPIs)
+- Analyst workbook (assumptions)
+        </textarea>
+        <aside class="notes">
+          This slide block is authored in Markdown. It also demonstrates vertical slides using the `--` separators.
+        </aside>
+      </section>
+
+      <!-- CODE SAMPLE with syntax highlighting -->
+      <section>
+        <h2>Reconciliation Snippet (Python)</h2>
+        <pre><code class="language-python">
+import pandas as pd
+
+df = pd.read_csv("gl_export.csv")
+rev = df[df["account"] == "Revenue"].amount.sum()
+opex = df[df["account"].str.startswith("OPEX")].amount.sum()
+ebit = rev - opex
+margin = ebit / rev
+
+print(f"EBIT Margin: {margin:.2%}")
+        </code></pre>
+        <p class="fragment fade-in">Source control link and CI artifacts available in the repo.</p>
+        <aside class="notes">
+          Provide just enough code to be auditable. For full reproducibility, include notebooks/ETL jobs in the repo.
+        </aside>
+      </section>
+
+      <!-- MATH / FORMULAS -->
+      <section>
+        <h2>Financial Formulae</h2>
+        <p>Return on Equity (ROE): \( \text{ROE} = \frac{\text{Net Income}}{\text{Average Shareholders' Equity}} \)</p>
+        <p>Weighted Average Cost of Capital (WACC): \[
+            \text{WACC} = \left(\frac{E}{V}\right)R_e + \left(\frac{D}{V}\right)R_d (1 - T_c)
+        \]</p>
+        <p class="fragment fade-in-then-semi-out">Net Present Value (NPV): \( \text{NPV} = \sum_{t=0}^{n} \frac{C_t}{(1+r)^t} \)</p>
+        <aside class="notes">
+          We use KaTeX via the Reveal Math plugin for crisp typesetting and fast rendering.
+        </aside>
+      </section>
+
+      <!-- KPI CHART (data-driven visualization) -->
+      <section>
+        <h2>Quarterly Performance</h2>
+        <div id="kpi-chart" class="chart" data-src="data/analysis.json"></div>
+        <p class="muted">Tip: Resize the window—chart resizes automatically.</p>
+        <aside class="notes">
+          The chart is rendered from data/analysis.json using a responsive SVG with a viewBox.
+          Update the JSON to refresh the visualization without touching HTML.
+        </aside>
+      </section>
+
+      <!-- IMAGE (lazy-loaded) -->
+      <section>
+        <h2>Operating Model</h2>
+        <img data-src="images/diagrams/kpi-architecture.svg" alt="KPI Architecture Diagram" style="max-height:70vh;" />
+        <aside class="notes">
+          Images are lazy-loaded using Reveal's data-src to keep initial payload small.
+        </aside>
+      </section>
+
+      <!-- OUTLOOK with fragments -->
+      <section>
+        <h2>Outlook & Guidance</h2>
+        <ul>
+          <li class="fragment fade-in">Revenue growth expected to be within guidance range.</li>
+          <li class="fragment fade-in">EBIT margin expansion via opex discipline.</li>
+          <li class="fragment fade-in">Capital allocation: focus on tech, risk, and compliance.</li>
+        </ul>
+        <aside class="notes">
+          Keep guidance crisp; anchor to previously communicated ranges and risk factors.
+        </aside>
+      </section>
+
+      <!-- THANK YOU -->
+      <section>
+        <h2>Thank You</h2>
+        <p>Questions? <a href="mailto:24ds1000138@ds.study.iitm.ac.in">24ds1000138@ds.study.iitm.ac.in</a></p>
+        <p class="muted">Press <kbd>S</kbd> for speaker notes, <kbd>F</kbd> full-screen, <kbd>?</kbd> help.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- RevealJS core and plugins (loaded with defer for non-blocking) -->
+  <script src="https://unpkg.com/reveal.js@5/dist/reveal.js" defer></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/markdown/markdown.js" defer></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/highlight/highlight.js" defer></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/notes/notes.js" defer></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/math/math.js" defer></script>
+
+  <!-- KaTeX JS for math plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" defer></script>
+
+  <!-- Chart renderer -->
+  <script src="js/visualizations.js" defer></script>
+
+  <script>
+    window.addEventListener('load', () => {
+      const deck = new Reveal({
+        hash: true,
+        preloadIframes: true,
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ],
+        // Load plugins before init is ensured by 'defer' + ordering above.
+        // Help performance on mobile
+        pdfSeparateFragments: false
+      });
+      deck.initialize().then(() => {
+        // Initialize charts after deck is ready
+        if (window.renderKPIChart) window.renderKPIChart();
+      });
+    });
+  </script>
+</body>
+</html>

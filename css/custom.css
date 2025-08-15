@@ -1,0 +1,19 @@
+/* Custom styles and responsive design */
+:root {
+  --r-main-font-size: calc(0.5vw + 0.5vh + 0.5vmin);
+}
+
+.reveal .muted { opacity: 0.7; font-size: 0.8em; }
+
+/* Responsive chart container */
+.chart {
+  width: 100%;
+  height: calc(100vh - 200px);
+}
+
+/* Tweak code blocks for readability */
+.reveal pre code {
+  font-size: 0.9em;
+  line-height: 1.4;
+  white-space: pre;
+}
