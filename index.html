@@ -29,7 +29,10 @@
           <span class="tag">Code</span>
           <span class="tag">Math</span>
         </p>
-        <p style="margin-top:2rem">Contact: <strong id="email"></strong></p>
+
+        <!-- Email using data attribute approach -->
+        <p style="margin-top:2rem">Contact: <div data-e="email">Conact</div><span style="display:none;">24ds1000138@ds.study.iitm.ac.in</span></p>
+
         <aside class="notes">
           Welcome! This deck showcases modern presentation capabilities—animations, markdown, code with syntax highlighting, and financial math.
           Use the arrow keys to navigate. Press <kbd>S</kbd> for the speaker view.
@@ -102,7 +105,7 @@ print(f"NIM: {nim:.4%}")
 
       <section>
         <h2>Thank You</h2>
-        <p>Questions? Contact <strong id="email2"></strong></p>
+        <p>Questions? Contact: <div data-e="email">Conact</div><span style="display:none;">24ds1000138@ds.study.iitm.ac.in</span></p>
         <p class="fragment">Press <kbd>?</kbd> to view all keyboard shortcuts.</p>
         <aside class="notes">
           Invite Q&A and share the GitHub Pages link where this deck is hosted.
@@ -126,12 +129,6 @@ print(f"NIM: {nim:.4%}")
       plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
     });
     deck.initialize();
-
-    // Dynamically inject email to avoid Cloudflare removal
-    const user = "24ds1000138";
-    const domain = "ds.study.iitm.ac.in";
-    document.getElementById("email").textContent = `${user}@${domain}`;
-    document.getElementById("email2").textContent = `${user}@${domain}`;
   </script>
 </body>
 </html>
