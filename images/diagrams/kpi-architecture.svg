@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#66ccff"/>
+      <stop offset="100%" stop-color="#3366ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="white"/>
+  <g transform="translate(40,40)">
+    <rect x="0" y="0" width="720" height="320" fill="url(#g)" opacity="0.08"/>
+    <text x="0" y="-10" font-size="18" fill="#333">KPI Architecture</text>
+    <g font-size="14" fill="#333">
+      <text x="10" y="30">Data Sources</text>
+      <rect x="10" y="40" width="160" height="60" rx="10" fill="#eef5ff" stroke="#99bbff"/>
+      <text x="20" y="70">ERP / DWH</text>
+
+      <text x="210" y="30">Processing</text>
+      <rect x="210" y="40" width="160" height="60" rx="10" fill="#eefaf0" stroke="#8bd19c"/>
+      <text x="220" y="70">ETL / Transform</text>
+
+      <text x="410" y="30">KPIs</text>
+      <rect x="410" y="40" width="140" height="60" rx="10" fill="#fff6e6" stroke="#ffc266"/>
+      <text x="420" y="70">Revenue, EBIT</text>
+
+      <text x="580" y="30">Viz</text>
+      <rect x="580" y="40" width="140" height="60" rx="10" fill="#f3e8ff" stroke="#c09bff"/>
+      <text x="590" y="70">Dashboards</text>
+
+      <!-- arrows -->
+      <path d="M170,70 L210,70" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+      <path d="M370,70 L410,70" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+      <path d="M550,70 L580,70" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+    </g>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#666"/>
+    </marker>
+  </defs>
+</svg>
